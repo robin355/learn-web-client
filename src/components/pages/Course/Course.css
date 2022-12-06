@@ -1,0 +1,33 @@
+.course-container img {
+    height: 250px;
+    width: 100%;
+
+
+}
+
+.course-container {
+    border: 2px solid gray;
+
+}
+
+.btn-courses {
+    width: 100%;
+    border: none;
+    background-color: tomato;
+    color: white;
+}
+
+.btn-details:hover {
+    background-color: green;
+}
+
+.text-link {
+    text-decoration: none;
+    color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    .courses-container img {
+        width: 100%;
+    }
+}

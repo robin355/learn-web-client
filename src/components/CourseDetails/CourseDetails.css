@@ -1,0 +1,10 @@
+.details img {
+    height: 300px;
+    width: 100%;
+}
+
+.details {
+    width: 450px;
+    margin: 10px auto;
+    border: 2px solid gray;
+}
