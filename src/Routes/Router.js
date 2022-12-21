@@ -7,6 +7,7 @@ import ErrorPage from '../components/pages/ErrorPage/ErrorPage'
 import Faq from '../components/pages/Faq/Faq'
 import Login from '../components/pages/Login/Login'
 import Register from '../components/pages/Resgister/Register'
+import Home from '../Home/Home/Home'
 import Main from '../Layout/Main'
 import PrivateRouter from '../PrivateRouter/PrivateRouter'
 
@@ -18,7 +19,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Courses></Courses>
+                element: <Home></Home>
             },
             {
                 path: '/courses',

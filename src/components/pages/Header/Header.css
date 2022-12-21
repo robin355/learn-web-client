@@ -6,10 +6,6 @@
     font-size: 30px;
 }
 
-.menu:hover {
-    color: tomato;
-}
-
 .active {
     color: greenyellow;
 }

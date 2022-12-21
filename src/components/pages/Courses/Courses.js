@@ -1,8 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
 import Course from '../Course/Course';
 import './Courses.css'
 const Courses = () => {
@@ -15,26 +12,21 @@ const Courses = () => {
     }, [])
 
     return (
-        <div>
-            <Container>
-                <Row>
-                    <Col lg='3'>
-                        {
-                            courses.map(course => <p key={course.id}>
-                                <Link to={`/course/${course.id}`}>{course.name}</Link>
-                            </p>)
-                        }
+        <div className='lg:flex gap-10'>
+            <div className='ml-6 mt-6 text-center text-2xl font-bold'>
+                <h4 className='text-3xl mb-5'> Courses</h4>
+                {
+                    courses.map(course => <p key={course.id}>
+                        <Link to={`/course/${course.id}`}>{course.name}</Link>
+                    </p>)
+                }
+            </div>
+            <div className='grid lg:grid-cols-3 gap-6 md:grid-cols-2 sm:grid-cols-1 mt-6'>
+                {
+                    courses.map(course => <Course course={course} key={course.id}></Course>)
+                }
+            </div>
 
-                    </Col>
-                    <Col lg='9'>
-                        <div className='courses-container'>
-                            {
-                                courses.map(course => <Course course={course} key={course.id}></Course>)
-                            }
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
         </div>
     );
 };

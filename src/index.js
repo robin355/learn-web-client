@@ -5,7 +5,6 @@ import App from './App';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthProvider from './Context/AuthProvider';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

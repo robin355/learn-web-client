@@ -1,18 +1,13 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
+import { Link } from 'react-router-dom'
 import Image from 'react-bootstrap/Image'
 import { FaUserAlt } from "react-icons/fa";
-import Navbar from 'react-bootstrap/Navbar';
 import './Header.css'
 import { AuthContext } from '../../../Context/AuthProvider';
 import { toast } from 'react-toastify';
 const Header = () => {
     const { user, Logout } = useContext(AuthContext)
-    let active = {
-        textDecoration: "underline",
-    };
+
     const handleLogout = () => {
         Logout()
             .then(() => { toast.success('Now,Logout Accound') })
@@ -20,7 +15,68 @@ const Header = () => {
     }
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <div className="navbar bg-neutral">
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        </label>
+                        <ul tabIndex={0} className=" menu-compact dropdown-content mt-3 p-2 shadow bg-neutral text-white rounded-box w-52">
+                            <li><Link to="/courses">Courses</Link></li>
+                            <li><Link to="/faq">FAQ</Link></li>
+                            <li><Link to="/blogs">Blogs</Link></li>
+                            {user?.photoURL ?
+                                <Image title={user?.displayName}
+                                    roundedCircle
+                                    src={user.photoURL}
+                                    style={{ height: '30px' }}
+                                >
+                                </Image> :
+                                <FaUserAlt />
+                            }
+
+                            {
+                                user?.uid ?
+                                    <>
+                                        <button variant="outline-success" onClick={handleLogout}>Logout</button>
+                                    </> :
+                                    <>
+                                        <li>
+                                            <Link to="/login">Login</Link>
+                                        </li>
+                                    </>
+                            }
+
+                        </ul>
+                    </div>
+                    <Link className="text-white normal-case text-xl">Web Learn</Link>
+                </div>
+                <div className="navbar-center hidden lg:flex">
+                    <ul className="menu menu-horizontal px-1">
+                        <li><Link to="/courses">Courses</Link></li>
+                        <li><Link to="/faq">FAQ</Link></li>
+                        <li><Link to="/blogs">Blogs</Link></li>
+
+                        {
+                            user?.uid ?
+                                <>
+                                    <li>
+                                        <button variant="outline-success" onClick={handleLogout}>Logout</button>
+                                    </li>
+                                </> :
+                                <>
+                                    <li>
+                                        <Link to="/login">Login</Link>
+                                    </li>
+                                </>
+                        }
+
+
+                    </ul>
+                </div>
+
+            </div>
+            {/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand to='/'>
                         <img
@@ -72,7 +128,7 @@ const Header = () => {
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
-            </Navbar>
+            </Navbar> */}
         </div>
     );
 };
